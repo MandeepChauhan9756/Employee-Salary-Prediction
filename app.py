@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd 
 import joblib
 
+df = pd.read_csv("data/salary.csv")
 # ==========================================
 # Load Trained Model
 # ==========================================
@@ -113,9 +114,9 @@ with col1:
     )
     
 with col2:
-    city = st.text_input(
+    city = st.selectbox(
         "City",
-        "Delhi"
+        sorted(df["City"].unique())
     )
 
     company_size = st.selectbox(
@@ -169,9 +170,9 @@ with col2:
         value=80000
     )
 
-    job_title = st.text_input(
+    job_title = st.selectbox(
         "Job Title",
-        "Software Engineer"
+        sorted(df["Job_Title"].unique())
     )
     
 # ==========================================
